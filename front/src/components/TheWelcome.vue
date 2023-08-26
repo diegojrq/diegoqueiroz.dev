@@ -1,5 +1,6 @@
 <script setup>
 import WelcomeItem from './WelcomeItem.vue'
+import TheThing from './TheThing.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
@@ -12,6 +13,10 @@ import IconGreaterThan from './icons/IconGreaterThan.vue'
 </script>
 
 <template>
+
+  <button @click="count++">{{ count }}</button>
+
+  <TheThing :orgao="7" />
   
   <WelcomeItem>
     <template #icon>
@@ -19,7 +24,7 @@ import IconGreaterThan from './icons/IconGreaterThan.vue'
     </template>
     <template #heading>titlr</template>
 
-    Content
+    Contenido
     <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
     provides you with all information you need to get started.
   </WelcomeItem>
