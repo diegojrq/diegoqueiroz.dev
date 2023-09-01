@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
 
+use Laravel\Passport\Http\Controllers\AccessTokenController;
+use Laravel\Passport\Http\Controllers\ApproveAuthorizationController;
+use Laravel\Passport\Http\Controllers\DenyAuthorizationController;
+use Psr\Http\Message\ServerRequestInterface;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +29,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('books', BookController::class);
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('oauth/authorize', [ApproveAuthorizationController::class, 'approve']);
+Route::delete('oauth/authorize', [DenyAuthorizationController::class, 'deny']);
+Route::post('oauth/token', [AccessTokenController::class, 'issueToken'])->middleware('throttle');
 
-Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 

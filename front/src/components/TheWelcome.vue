@@ -1,34 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import WelcomeItem from './WelcomeItem.vue'
-import TheThing from './TheThing.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import IconBase from './icons/IconBase.vue'
-import IconWrite from './icons/IconWrite.vue'
-import IconGreaterThan from './icons/IconGreaterThan.vue'
-
 </script>
 
 <template>
-
-  <button @click="count++">{{ count }}</button>
-
-  <TheThing :orgao="7" />
-  
-  <WelcomeItem>
-    <template #icon>
-      <IconBase width="24" height="24" icon-name="A coding job"><IconGreaterThan /></IconBase>
-    </template>
-    <template #heading>titlr</template>
-
-    Contenido
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
-  
   <WelcomeItem>
     <template #icon>
       <DocumentationIcon />
