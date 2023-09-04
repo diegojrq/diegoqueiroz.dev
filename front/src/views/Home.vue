@@ -1,5 +1,4 @@
 <template>
-  oi
   <HelloWorld />
 </template>
 

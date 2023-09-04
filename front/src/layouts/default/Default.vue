@@ -2,7 +2,6 @@
   <v-app>
     <default-bar />
     <default-nav-drawer />
-
     <default-view />
     <default-footer />
   </v-app>
