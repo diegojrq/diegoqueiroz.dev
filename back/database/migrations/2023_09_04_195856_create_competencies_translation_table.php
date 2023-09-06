@@ -11,8 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_history', function (Blueprint $table) {
+        Schema::create('competencies_translation', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('competency_id')                                
+                ->references('id')
+                ->on('competencies');
+
+            $table->string('locale')->index();
+
+            $table->string('name');
+            $table->string('description');
+
             $table->timestamps();
         });
     }
@@ -22,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_history');
+        Schema::dropIfExists('competencies_translation');
     }
 };

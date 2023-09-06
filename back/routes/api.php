@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthController;
 
@@ -28,6 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('books', BookController::class);
+Route::apiResource('users', UserController::class);
 
 Route::post('oauth/authorize', [ApproveAuthorizationController::class, 'approve']);
 Route::delete('oauth/authorize', [DenyAuthorizationController::class, 'deny']);
