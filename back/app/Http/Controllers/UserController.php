@@ -17,6 +17,7 @@ class UserController extends Controller
         return User::
             with('jobHistory')->
             with('jobHistory.translations')->
+            with('jobHistory.skills')->
             with('skillCompetencies')->
             with('skillCompetencies.skill')->
             with('skillCompetencies.competency')->

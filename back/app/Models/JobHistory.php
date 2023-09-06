@@ -38,5 +38,10 @@ class JobHistory extends Model
     {
         return $this->hasMany(JobHistoryTranslation::class, 'job_history_id', 'id');
     }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'job_history_skills', 'job_history_id', 'skill_id');
+    }
     
 }
