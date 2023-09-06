@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->hasMany(UserSkillCompetency::class);
     }
 
+    public function jobHistory()
+    {
+        return $this->hasMany(JobHistory::class);
+    }
+
 }

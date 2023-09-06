@@ -15,6 +15,8 @@ class UserController extends Controller
     public function show($id)
     {
         return User::
+            with('jobHistory')->
+            with('jobHistory.translations')->
             with('skillCompetencies')->
             with('skillCompetencies.skill')->
             with('skillCompetencies.competency')->

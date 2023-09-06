@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompetencySeeder::class);
         $this->call(SkillSeeder::class);
         $this->call(UserSkillCompetencySeeder::class);
+        $this->call(JobHistorySeeder::class);        
         
         // \App\Models\User::factory(10)->create();
 

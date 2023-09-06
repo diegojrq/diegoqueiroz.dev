@@ -5,26 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetencyTranslation extends Model
+class JobHistoryTranslation extends Model
 {
     use HasFactory;
 
-    protected $table = 'competencies_translation';
+    protected $table = 'job_history_translation';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'competency_id',
+        'job_history_id',
         'locale',
-        'name',
-        'description',
+        'job_title',
+        'job_description',
     ];
 
     protected $casts = [
-        'competency_id' => 'integer',
-        'locale'        => 'string',
-        'name'          => 'string',
-        'description'   => 'string',        
+        'job_history_id'    => 'integer',
+        'locale'            => 'string',
+        'job_title'         => 'string',
+        'job_description'   => 'string',
     ];
 
     protected $hidden = [
