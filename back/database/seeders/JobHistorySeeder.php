@@ -14,26 +14,32 @@ class JobHistorySeeder extends Seeder
      */
     public function run(): void
     {
-        $competency = JobHistory::create([
-            'user_id'       => 1,
-            'company_name'  => 'Casa do Código',
-            'local'         => 'São Paulo',
-            'start_date'    => '2012-01-01',
-            'end_date'      => '2013-01-01',
-        ]);
 
-        $competency->translations()->saveMany([
-            new JobHistoryTranslation([
-                'locale'            => 'en-us',
-                'job_title'         => 'Developer',
-                'job_description'   => 'Very gude professional.'
-            ]),
-            new JobHistoryTranslation([
-                'locale'            => 'pt-br',
-                'job_title'         => 'Desenvovledor',
-                'job_description'   => 'Bom home.'
-            ]),
-        ]);
+        for ($i = 0; $i < 4; $i++) { 
+
+            $competency = JobHistory::create([
+                'user_id'       => 1,
+                'company_name'  => fake()->company(),
+                'local'         => 'São Paulo',
+                'start_date'    => fake()->date(),
+                'end_date'      => fake()->date(),
+            ]);
+    
+            $competency->translations()->saveMany([
+                new JobHistoryTranslation([
+                    'locale'            => 'en-us',
+                    'job_title'         => fake()->jobTitle(),
+                    'job_description'   => fake()->sentence($nbWords = random_int(25, 100), $variableNbWords = true)
+                ]),
+                new JobHistoryTranslation([
+                    'locale'            => 'pt-br',
+                    'job_title'         => fake()->jobTitle(),
+                    'job_description'   => fake()->sentence($nbWords = random_int(25, 100), $variableNbWords = true)
+                ]),
+            ]);
+            # code...
+        }
+
 
     }
 }

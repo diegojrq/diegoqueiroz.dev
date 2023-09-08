@@ -1,5 +1,5 @@
 <template>
-  <v-timeline align="start">
+  <v-timeline align="center">
     <v-timeline-item
       v-for="(job, i) in user.job_history"
       :key="i"
@@ -7,7 +7,7 @@
       icon="mdi-book-variant"
       fill-dot
     >
-      <v-card>
+      <v-card class="v-card">
         <v-card-title class="v-card-title">
           <div class="job-date">
             {{ formatDate(job.start_date) }} - {{ formatDate(job.end_date) }}
@@ -23,7 +23,12 @@
           <p>{{ job.translations.find((t) => t.locale === locale).job_description }}</p>
         </v-card-text>
         <v-card-actions>
-          <v-btn>Click me</v-btn>
+          <div
+            v-for="(skill, j) in job.skills"
+            :key="j"
+          >
+            {{ skill.name }}
+          </div>          
         </v-card-actions>
       </v-card>
     </v-timeline-item>
@@ -79,7 +84,7 @@ $primary-color: #147914;
   font-size: 0.9rem;
   color: #fff;
   font-weight: normal;
-  padding-left: 12px;
+  padding-left: 12px;  
 }
 
 .job-date {  
@@ -99,6 +104,11 @@ $primary-color: #147914;
 
 .v-card-text {
   margin-top: 14px;
+}
+
+.v-card {
+  min-width: 100%;
+  max-width: 100%;
 }
 
 </style>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('locale')->index();
 
             $table->string('job_title');
-            $table->string('job_description');
+            $table->text('job_description');
 
             $table->timestamps();
         });

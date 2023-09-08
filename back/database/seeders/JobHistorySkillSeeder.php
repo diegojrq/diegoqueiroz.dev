@@ -13,11 +13,17 @@ class JobHistorySkillSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=0; $i < 10; $i++) { 
-            JobHistorySkill::create([
-                'job_history_id'        => 1,
-                'skill_id'              => $i + 1,
-            ]);
+        for ($i = 1; $i < 5; $i++) { 
+
+            $nSkills = random_int(1, 10);
+
+            for ($j = 1; $j < $nSkills ; $j++) { 
+                
+                JobHistorySkill::create([
+                    'job_history_id'        => $i,
+                    'skill_id'              => $j,
+                ]);
+            }
         }
     }
 }
