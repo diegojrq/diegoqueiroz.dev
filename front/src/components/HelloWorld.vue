@@ -25,7 +25,8 @@
         <v-card-text class="v-card-text">
           <p>{{ job.translations.find((t) => t.locale === locale).job_description }}</p>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions
+          v-if="job.skills.length > 0">
           <div>
             <v-chip
               v-for="(skill, j) in job.skills"
