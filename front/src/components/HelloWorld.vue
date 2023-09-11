@@ -1,17 +1,17 @@
 <template>
-  <v-timeline align="center">
-    <v-timeline-item
+  <v-timeline    
+    class="v-timeline">
+    <v-timeline-item      
+      min-width="1"
+      class="v-timeline-item"
       v-for="(job, i) in user.job_history"
       :key="i"
       dot-color="green-lighten-1"
-      icon="mdi-book-variant"
+      icon="mdi-desktop-classic"
       fill-dot
     >
       <v-card class="v-card">
-        <v-card-title class="v-card-title">
-          <div class="job-date">
-            {{ formatDate(job.start_date) }} - {{ formatDate(job.end_date) }}
-          </div>
+        <v-card-title class="v-card-title">          
           <div class="job-title">            
             {{ job.translations.find((t) => t.locale === locale).job_title }}
           </div>
@@ -19,15 +19,24 @@
             at {{ job.company_name }}
           </div>          
         </v-card-title>
+        <v-card-subtitle class="v-card-subtitle">
+          {{ formatDate(job.start_date) }} - {{ formatDate(job.end_date) }} | {{ job.local }}
+        </v-card-subtitle>
         <v-card-text class="v-card-text">
           <p>{{ job.translations.find((t) => t.locale === locale).job_description }}</p>
         </v-card-text>
         <v-card-actions>
-          <div
-            v-for="(skill, j) in job.skills"
-            :key="j"
-          >
-            {{ skill.name }}
+          <div>
+            <v-chip
+              v-for="(skill, j) in job.skills"
+              :key="j"
+              class="ma-2"
+              label
+              color="green"              
+            >
+              <v-icon start icon="mdi-laptop"></v-icon>
+              {{ skill.name }}
+            </v-chip>
           </div>          
         </v-card-actions>
       </v-card>
@@ -71,9 +80,22 @@ export default {
 
 $primary-color: #147914;
 
+.v-timeline {
+  margin-top: 2rem;
+  margin-right: 2rem;
+  margin-left: 2rem;  
+  margin-bottom: 10rem;  
+}
+
+.v-card {
+  min-width: 100%;
+  max-width: 100%;
+}
+
 .v-card-title {
   background: $primary-color;
 }
+
 .job-title {
   font-size: 1.1rem;
   color: #fff;
@@ -87,28 +109,13 @@ $primary-color: #147914;
   padding-left: 12px;  
 }
 
-.job-date {  
-  width: 32%;
-  position: absolute;
-  top: 40px;
-  right: 12px;
-  background: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  text-align: center;
+.v-card-subtitle {
+  font-size: 0.8rem;
   color: $primary-color;
-  font-size: 0.8rem;  
-  font-weight: bold;  
-  letter-spacing: normal;
-}
-
-.v-card-text {
-  margin-top: 14px;
-}
-
-.v-card {
-  min-width: 100%;
-  max-width: 100%;
+  text-align: right;
+  font-weight: bold;
+  padding-top: 8px;
+  
 }
 
 </style>
