@@ -13,7 +13,6 @@
       <v-card class="v-card">
         <v-card-title class="v-card-title">          
           <div class="job-title">            
-            {{ $t("message.hello") }}
             {{ job.translations.find((t) => t.locale === locale).job_title }}
           </div>
           <div class="job-company">
