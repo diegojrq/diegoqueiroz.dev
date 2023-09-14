@@ -5,7 +5,7 @@
         aloooooo oooooooo
       </v-col>
       <v-col cols="12" md="9">
-        <router-view />        
+        <router-view />
       </v-col>
     </v-row>
   </v-main>

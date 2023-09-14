@@ -13,6 +13,7 @@
       <v-card class="v-card">
         <v-card-title class="v-card-title">          
           <div class="job-title">            
+            {{ $t("message.hello") }}
             {{ job.translations.find((t) => t.locale === locale).job_title }}
           </div>
           <div class="job-company">
@@ -57,11 +58,13 @@ export default {
   mixins: [],
   data() {
     return {
-      locale: 'en-us',      
+      locale: '',
       user: [],
     }
   },
   created() {
+
+    this.locale = localStorage.getItem('locale') || 'en-us';
 
     getUser(1).then((response) => {
       this.user = response.data;
