@@ -63,7 +63,7 @@ export default {
   },
   created() {
 
-    this.locale = localStorage.getItem('locale') || 'en-us';
+    this.locale = this.$i18n.locale || 'en-us';
 
     getUser(1).then((response) => {
       this.user = response.data;

@@ -9,7 +9,6 @@ import App from './App.vue'
 
 // Composables
 import { createApp } from 'vue'
-import { createI18n } from 'vue-i18n'
 
 // Plugins
 import { registerPlugins } from '@/plugins'

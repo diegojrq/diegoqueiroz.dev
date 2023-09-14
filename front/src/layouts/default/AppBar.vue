@@ -39,10 +39,13 @@ export default {
   },
   methods: {
     setLocale(locale) {
+      const oldLocale = this.$i18n.locale;
       localStorage.setItem('locale', locale);
       this.$i18n.locale = localStorage.getItem('locale') || 'en-us';
 
-      this.$router.go();
+      if (oldLocale != localStorage.getItem('locale')) {
+        this.$router.go();        
+      }
     }
   }
 }
